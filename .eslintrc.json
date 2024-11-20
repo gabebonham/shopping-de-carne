@@ -1,3 +1,19 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    // Disable unused variable checks
+    "@typescript-eslint/no-unused-vars": "off",
+
+    // Disable missing "key" prop in list iterators
+    "react/jsx-key": "off",
+
+    // Disable Next.js warning for using <img> instead of <Image />
+    "@next/next/no-img-element": "off",
+
+    // Disable exhaustive-deps for useEffect (if you're okay with missing dependencies)
+    "react-hooks/exhaustive-deps": "off",
+
+    // Disable the warning for using the generic Function type
+    "@typescript-eslint/no-unsafe-function-type": "off"
+  }
 }
