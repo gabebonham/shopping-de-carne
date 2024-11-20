@@ -1,24 +1,30 @@
 import { getProducts } from "@/app/admin/home/_service/ProductsService";
 import { useRouter } from "next/router";
 import HomeSection from "../home/_components/HomeSection";
-import Layout from "../home/_components/Layout";
+import Layout from "../home/_components/LayoutTemplate";
 import { ItemDto } from "../home/_dtos/ItemDto";
 import { CategoryEnum } from "@/app/_enums/Enums";
 import Item from "@/model/Item";
 import { useEffect } from "react";
 import { Breadcrumbs } from "../home/_components/BreadCrumbs";
-
+import Branch from "@/model/BranchModel";
+import { getBranches } from "@/app/admin/home/_service/CompanyService";
+import { MenuNavItem } from "@/model/MenuNavItem";
+import { getNavItems } from "@/app/admin/home/_service/MenuNavService";
 
 export async function getServerSideProps({ query }) {
     const category:string = query.category || '' as string;
     const productss:Item[] = await getProducts() as Item[];
-    
+    const branches = (await getBranches()).map(b=>({id:b.id,city:b.city}))
+    const items = (await getNavItems()).map(i=>({title:i.title,link:i.link, subItems:[], id:i.id}));
     const serializedProducts:ItemDto[] = productss.map((p)=>{return p.mapToDto(true)as ItemDto}) as ItemDto[]
     console.log(serializedProducts)
     return {
         props:{
             category,
-            products:serializedProducts
+            products:serializedProducts,
+            branches,
+            items
         },
             
     };
@@ -27,7 +33,7 @@ export async function getServerSideProps({ query }) {
 
 
 
-export default function ProductsPage({ category, products }: {category:string, products:ItemDto[]}) {
+export default function ProductsPage({items,  category, products, branches }: {items:MenuNavItem[], branches:Branch[], category:string, products:ItemDto[]}) {
     const router = useRouter();
 
     // Redirect to the correct category page only if category is valid
@@ -46,7 +52,7 @@ export default function ProductsPage({ category, products }: {category:string, p
     ]
 
     return (
-        <Layout>
+        <Layout items={items} newBranches={branches}>
             <Breadcrumbs items={breadCrumbs}/>
             <h1 className="justify-self-center text-3xl m-8">Todos os Produtos</h1>
             <div className="place-self-center w-7/12">

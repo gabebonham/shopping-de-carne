@@ -17,9 +17,9 @@ import {
   export function Breadcrumbs({items}:{items:{link:string,name:string}[]}) {
     return (
       <Breadcrumb className="pt-12 pl-12">
-        <BreadcrumbList>
+        <BreadcrumbList key='a'>
         {items.map((p,i)=>
-          <BreadcrumbItem>
+          <BreadcrumbItem key={i}>
           
           <BreadcrumbLink href={p.link}>{p.name}</BreadcrumbLink>
           <ChevronRight/>

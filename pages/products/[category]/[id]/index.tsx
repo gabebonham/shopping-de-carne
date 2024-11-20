@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Item from "@/model/Item";
 import { Breadcrumbs } from "@/pages/home/_components/BreadCrumbs";
-import Layout from "@/pages/home/_components/Layout";
+import Layout from "@/pages/home/_components/LayoutTemplate";
 import cookies from "js-cookie";
 import { useEffect } from "react";
 import { GetServerSideProps } from "next";
+import { getBranches } from "@/app/admin/home/_service/CompanyService";
+import { getNavItems } from "@/app/admin/home/_service/MenuNavService";
 
 
 export async function getServerSideProps({ params }:{params:{id:string, category:string}}) {
@@ -20,10 +22,13 @@ export async function getServerSideProps({ params }:{params:{id:string, category
         description: product.description,
         imageUrl: product.imageUrl
     };
-    console.log(product)
+    const branches = (await getBranches()).map(b=>({id:b.id,city:b.city}))
+    const items = (await getNavItems()).map(i=>({title:i.title,link:i.link, subItems:[], id:i.id}));
     return {
         props:{
             product:serializedProduct,
+            branches,
+            items
         },
             
     };
@@ -31,7 +36,8 @@ export async function getServerSideProps({ params }:{params:{id:string, category
 
 
 
-export default function ProductPage({product}){
+
+export default function ProductPage({items, product, branches}){
 
     const breadCrumbs = [
         {
@@ -47,8 +53,9 @@ export default function ProductPage({product}){
             link:'/products/'+product.category
         }
     ]
+    
     return <>
-        <Layout>
+        <Layout items={items} newBranches={branches}>
             <Breadcrumbs items={breadCrumbs}/>
             <Card className="grid grid-cols-2 pt-20 pb-48">
                 <CardHeader className="justify-self-end">

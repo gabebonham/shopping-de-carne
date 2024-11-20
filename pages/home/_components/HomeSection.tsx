@@ -21,9 +21,9 @@ export default function HomeSection({items, className, gap, flag}:{flag:boolean,
     return (
         <div className={""+className}>
         <Card className={"grid grid-cols-3 gap-y-24  py-12 w-auto rounded-none outline-none justify-items-center"}>
-            {items.map((p)=>
+            {items.map((p, i)=>
                 
-                p.show&&<a href='#' onClick={e=>handler(p.item)}><Card className={"transition hover:-translate-y-1.5 animate-fadeIn size-52 grid grid-cols-1 grid-rows-2 shadow-lg border-0 outline-none "}>
+                p.show&&<a href='#' key={i} onClick={e=>handler(p.item)}><Card className={"transition hover:-translate-y-1.5 animate-fadeIn size-52 grid grid-cols-1 grid-rows-2 shadow-lg border-0 outline-none "}>
             <CardHeader className="justify-self-center">
                 <img src={p.item.imageUrl} width={100} height={100} alt="product"/>
             </CardHeader>
