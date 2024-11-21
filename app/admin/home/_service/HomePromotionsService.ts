@@ -1,10 +1,7 @@
-import Item from "@/model/Item";
-import { getProducts } from "./ProductsService";
+import { getProducts } from './ProductsService';
 
-
-
-async function getHomePromotions(){
-    return (await getProducts()).filter(i=>i.isPromotion)
+async function getHomePromotions() {
+	return (await getProducts()).filter((i) => i.isPromotion);
 }
 
-export {getHomePromotions}
+export { getHomePromotions };

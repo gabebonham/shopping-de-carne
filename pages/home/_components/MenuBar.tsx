@@ -13,8 +13,9 @@ import {
 	MenubarSubTrigger,
 	MenubarTrigger,
 } from '@/components/ui/menubar';
+import MenuNavItem from '@/model/MenuNavItem';
 
-export function MenuBar({ items }) {
+export default function MenuBar({ items = [] }: { items: MenuNavItem[] }) {
 	const gridCols = items.length;
 	return (
 		<Menubar className={`flex flex-row rounded-none `}>

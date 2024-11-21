@@ -7,7 +7,7 @@ import {
 	CardHeader,
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { MenuNavItem } from '@/model/MenuNavItem';
+import MenuNavItem from '@/model/MenuNavItem';
 import { Checkbox } from '@radix-ui/react-checkbox';
 import { Label } from '@radix-ui/react-menubar';
 import { useEffect, useRef, useState } from 'react';

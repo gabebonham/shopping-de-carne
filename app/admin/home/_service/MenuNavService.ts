@@ -1,4 +1,4 @@
-import { MenuNavItem } from '@/model/MenuNavItem';
+import MenuNavItem from '@/model/MenuNavItem';
 
 async function getNavItems(): Promise<MenuNavItem[]> {
 	const j = (await (

@@ -9,7 +9,7 @@ import {
 	TableHeader,
 	TableRow,
 } from '@/components/ui/table';
-import { MenuNavItem } from '@/model/MenuNavItem';
+import MenuNavItem from '@/model/MenuNavItem';
 
 export default function TableComponent({
 	menuItems,

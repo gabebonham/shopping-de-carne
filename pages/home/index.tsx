@@ -1,5 +1,5 @@
 import CarouselPlugin from './_components/Caroussel';
-import { Breadcrumbs } from '@/pages/home/_components/BreadCrumbs';
+import Breadrumbs from '@/pages/home/_components/BreadCrumbs';
 import HomeSection from './_components/HomeSection';
 import { getHomePromotions } from '@/app/admin/home/_service/HomePromotionsService';
 import { getCarousselItems } from '@/app/admin/home/_service/CarousselService';
@@ -8,7 +8,7 @@ import FilterMenu from './_components/FilterMenu';
 import { CategoryEnum } from '@/app/_enums/Enums';
 import { useState } from 'react';
 import Item from '@/model/Item';
-import { ItemDto } from './_dtos/ItemDto';
+import ItemDto from '../../model/ItemDto';
 import { getBranches } from '@/app/admin/home/_service/CompanyService';
 import LayoutTemplate from './_components/LayoutTemplate';
 import { getNavItems } from '@/app/admin/home/_service/MenuNavService';
@@ -37,7 +37,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ menuItems, items, branches }) {
-	const allItems = items.map((i) => new ItemDto(i, true));
+	const allItems = items.map((i) => new ItemDto(i, true)) as ItemDto[];
 	const allBestItems = items.map((i) => new ItemDto(i, true));
 	const carousselItems = getCarousselItems();
 	const [showItems, setShowItems] = useState(allItems);

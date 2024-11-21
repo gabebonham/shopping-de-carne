@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@radix-ui/react-dropdown-menu';
 import { useRef, useState } from 'react';
-import { MenuNavItem } from '@/model/MenuNavItem';
 import HomeEditSection from './_components/HomeEditSection';
 import { link } from 'fs';
 import { getNavItems } from './_service/MenuNavService';

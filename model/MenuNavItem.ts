@@ -1,4 +1,4 @@
-export class MenuNavItem {
+export default class MenuNavItem {
 	id: string;
 	title: string;
 	link: string;
