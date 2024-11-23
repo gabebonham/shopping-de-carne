@@ -39,7 +39,7 @@ export default function LayoutTemplate({
 			<header className="sticky top-0 z-50 shadow-lg bg-red-500">
 				<div className="py-2 px-8 h-24 flex flex-row">
 					<h1 className="self-center text-center mr-4">
-						Shopping Das Carnes
+						Shopping De Carne
 					</h1>
 					<Input
 						placeholder="Pesquisa..."
