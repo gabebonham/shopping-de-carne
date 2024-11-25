@@ -20,7 +20,7 @@ export async function getServerSideProps() {
 	const menuItems = (await getNavItems()).map((i) => ({
 		title: i.title,
 		link: i.link,
-		subItems: [],
+		subItems: i.subItems,
 		id: i.id,
 	}));
 	const branches = (await getBranches()).map((b) => ({

@@ -21,15 +21,15 @@ export default function LayoutTemplate({
 	children: React.ReactNode;
 }) {
 	const contactInfo = [
-		{ title: 'Contate-nos', link: '#' },
-		{ title: 'Minha conta', link: '#' },
-		{ title: 'Sobre nós', link: '#' },
+		{ title: 'Contate-nos', link: '/em-construcao' },
+		{ title: 'Minha conta', link: '/em-construcao' },
+		{ title: 'Sobre nós', link: '/em-construcao' },
 	];
 
 	const manufacturerInfo = [
-		{ title: 'Contate-nos', link: '#' },
-		{ title: 'Minha conta', link: '#' },
-		{ title: 'Sobre nós', link: '#' },
+		{ title: 'Contate-nos', link: '/em-construcao' },
+		{ title: 'Minha conta', link: '/em-construcao' },
+		{ title: 'Sobre nós', link: '/em-construcao' },
 	];
 
 	const footerInfo = [manufacturerInfo, contactInfo];

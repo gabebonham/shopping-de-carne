@@ -37,7 +37,12 @@ export default function HomeEditSection({ menuItems }) {
 			setIsError(false);
 			const name = nameInputRef.current?.value as string;
 			const link = linkInputRef.current?.value as string;
-			const newItem = new MenuNavItem('', name, link, []);
+			const newItem = new MenuNavItem(
+				'',
+				name,
+				'/em-construcao',
+				[],
+			);
 
 			createNavItem(newItem);
 
@@ -48,7 +53,7 @@ export default function HomeEditSection({ menuItems }) {
 	};
 
 	return (
-		<div className="">
+		<div className="mt-8 w-full">
 			<h1 className="pb-4 pl-4">Editar Menu de Navegação:</h1>
 			<Card className="border rounded-lg">
 				<CardFooter className="flex flex-col items-start p-4 ">
@@ -66,9 +71,9 @@ export default function HomeEditSection({ menuItems }) {
 								"/".
 							</h1>
 						)}
-						<div className="basis-6/12"></div>
+						<div className="w-7/12"></div>
 						<Button
-							className="justify-self-end"
+							className="self-end"
 							onClick={handler1}
 						>
 							Adicionar

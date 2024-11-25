@@ -17,10 +17,7 @@ export default function FooterAcordeon() {
 				className="inline-block text-sm"
 			>
 				<AccordionTrigger>Quem somos?</AccordionTrigger>
-				<AccordionContent>
-					Yes. It adheres to the WAI-ARIA design
-					pattern.
-				</AccordionContent>
+				<AccordionContent>Lorem Ipsum</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
 				value="item-2"
@@ -29,11 +26,7 @@ export default function FooterAcordeon() {
 				<AccordionTrigger>
 					Onde estamos localizados?
 				</AccordionTrigger>
-				<AccordionContent>
-					Yes. It comes with default styles that
-					matches the other components&apos;
-					aesthetic.
-				</AccordionContent>
+				<AccordionContent>Lorem Ipsum</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
 				value="item-3"
@@ -42,10 +35,7 @@ export default function FooterAcordeon() {
 				<AccordionTrigger>
 					Estamos operando des de quando?
 				</AccordionTrigger>
-				<AccordionContent>
-					Yes. It's animated by default, but you
-					can disable it if you prefer.
-				</AccordionContent>
+				<AccordionContent>Lorem Ipsum</AccordionContent>
 			</AccordionItem>
 		</Accordion>
 	);

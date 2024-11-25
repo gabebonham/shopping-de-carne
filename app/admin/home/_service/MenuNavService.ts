@@ -6,6 +6,7 @@ async function getNavItems(): Promise<MenuNavItem[]> {
 			'https://670878788e86a8d9e42f006d.mockapi.io/api/data',
 		)
 	).json()) as MenuNavItem[];
+	console.log(j);
 	return j;
 }
 async function createNavItem(item) {

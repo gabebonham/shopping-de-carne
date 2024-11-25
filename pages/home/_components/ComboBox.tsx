@@ -35,16 +35,16 @@ export default function ComboboxDemo({
 					variant="outline"
 					role="combobox"
 					aria-expanded={open}
-					className="flex self-center justify-self-center mr-12"
+					className="flex self-center justify-self-center mr-12 w-48 max-w-48 min-w-48"
 				>
 					{value
 						? a.find(
 								(branch) =>
-									branch.id ==
+									branch.city ==
 									value,
-						  )?.id
+						  )?.city
 						: 'Escolha a filial...'}
-					<ChevronsUpDown className="ml-2 shrink-0 opacity-50" />
+					<ChevronsUpDown className="ml-2 shrink-0 opacity-50 justify-self-end" />
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className="w-48 p-0">

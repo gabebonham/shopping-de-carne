@@ -14,6 +14,7 @@ import {
 	MenubarTrigger,
 } from '@/components/ui/menubar';
 import MenuNavItem from '@/model/MenuNavItem';
+import Link from 'next/link';
 
 export default function MenuBar({ items = [] }: { items: MenuNavItem[] }) {
 	const gridCols = items.length;
@@ -24,48 +25,28 @@ export default function MenuBar({ items = [] }: { items: MenuNavItem[] }) {
 					<MenubarTrigger className="justify-center text-xs w-full">
 						{i.title}
 					</MenubarTrigger>
-					{i.subItems.map((s) => (
-						<MenubarContent
-							align="center"
-							className="w-96"
-						>
-							<MenubarCheckboxItem>
-								Always Show
-								Bookmarks Bar
-							</MenubarCheckboxItem>
-							<MenubarCheckboxItem
-								checked
-							>
-								Always Show Full
-								URLs
-							</MenubarCheckboxItem>
-							<MenubarSeparator />
-							<MenubarItem inset>
-								Reload{' '}
-								<MenubarShortcut>
-									⌘R
-								</MenubarShortcut>
-							</MenubarItem>
-							<MenubarItem
-								disabled
-								inset
-							>
-								Force Reload{' '}
-								<MenubarShortcut>
-									⇧⌘R
-								</MenubarShortcut>
-							</MenubarItem>
-							<MenubarSeparator />
-							<MenubarItem inset>
-								Toggle
-								Fullscreen
-							</MenubarItem>
-							<MenubarSeparator />
-							<MenubarItem inset>
-								Hide Sidebar
-							</MenubarItem>
-						</MenubarContent>
-					))}
+					<MenubarContent
+						align="center"
+						className="w-96"
+					>
+						{i.subItems.map((s) => (
+							<div className="justify-center items-center text-center self-stretch">
+								<MenubarItem className="self-center self-stretch items-center">
+									<Link
+										href={
+											i.link
+										}
+										className="w-full self-center items-center text-center self-stretch"
+									>
+										{
+											s
+										}
+									</Link>
+								</MenubarItem>
+								<MenubarSeparator />
+							</div>
+						))}
+					</MenubarContent>
 				</MenubarMenu>
 			))}
 		</Menubar>

@@ -42,7 +42,9 @@ export default function TableComponent({
 							{item.link}
 						</TableCell>
 						<TableCell>
-							{item.subItemsToString()}
+							{item.subItems.join(
+								'; ',
+							)}
 						</TableCell>
 						<TableCell className="items-end col-span-4">
 							<Button

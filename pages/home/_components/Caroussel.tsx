@@ -33,11 +33,11 @@ export default function CarouselPlugin({
 					<CarouselItem key={index}>
 						<div className=" p-0 m-0">
 							<Card className="p-4 m-0">
-								<CardContent className="flex h-48 items-center justify-center p-0 m-0">
+								<CardContent className="flex h-80 items-center justify-center p-0 m-0">
 									<Image
 										alt="currentImage"
-										width="600"
-										height="300"
+										width="500"
+										height="500"
 										src={
 											'/' +
 											i.imageUrl
