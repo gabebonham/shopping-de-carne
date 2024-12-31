@@ -11,13 +11,11 @@ export default {
 		extend: {
 			backgroundImage: {
 				back: "url('/headerBg.gif')",
-				back1: "url('/back2.gif')",
-				back2: "url('/back3.gif')",
+				back1: "url('/back9.jpg')",
 				back3: "url('/back4.gif')",
-				back4: "url('/back5.gif')",
 				back5: "url('/back6.jpg')",
-				back6: "url('/back7.jpg')",
 				back7: "url('/back8.jpg')",
+				back8: "url('/back11.jpg')",
 			},
 			colors: {
 				background: 'var(--background)',

@@ -1,27 +1,37 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function EditSiteComponent() {
 	const backList = [
 		'bg-back3',
 		'bg-back',
+		'bg-back1',
 		'bg-back5',
-		'bg-back6',
 		'bg-back7',
+		'bg-back8',
 	];
-	const [isBackground, setBackground] = useState(backList[0]);
 	const [counter, count] = useState(0);
 	const [isLayout, setLayout] = useState(true);
-	const changeBackground = () => {
-		document.body.classList.remove(backList[counter]);
-		if (counter == 4) {
-			document.body.classList.add(backList[0]);
+	const [trigger, toggle] = useState(false);
+	useEffect(() => {
+		const handler = async () => {
+			changeBackground();
+		};
+		handler();
+	}, [trigger]);
+	const changeBackground = async () => {
+		console.log(counter);
+		await document.body.classList.remove(backList[counter]);
+		if (counter == 5) {
+			await document.body.classList.add(backList[0]);
 		} else {
-			document.body.classList.add(backList[counter + 1]);
+			await document.body.classList.add(
+				backList[counter + 1],
+			);
 		}
-		if (counter == 4) {
+		if (counter == 5) {
 			count(0);
 		} else {
 			count(counter + 1);
@@ -55,7 +65,12 @@ export default function EditSiteComponent() {
 	};
 	return (
 		<div className="flex fixed bottom-0 right-0 z-100 shadow-lg rounded-2xl bg-[rgba(150,40,40,0.2)] w-fit m-2 p-4">
-			<Button onClick={changeBackground}>
+			<Button
+				onClick={(e) => {
+					toggle(!trigger);
+					changeBackground;
+				}}
+			>
 				Mudar Background
 			</Button>
 			<Button className="ml-4" onClick={changeLayout}>
