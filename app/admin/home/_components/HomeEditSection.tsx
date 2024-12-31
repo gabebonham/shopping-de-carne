@@ -8,35 +8,22 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import MenuNavItem from '@/model/MenuNavItem';
-import { Checkbox } from '@radix-ui/react-checkbox';
 import { Label } from '@radix-ui/react-menubar';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { createNavItem, deleteNavItem } from '../_service/MenuNavService';
-import Refresh from '../../_lib/Refresh';
-import { useRouter } from 'next/navigation';
-import Cookies from 'js-cookie';
-import TableComponent from './TableComponent';
 
-export default function HomeEditSection({ menuItems }) {
-	const router = useRouter();
-	const [itemId, setItemId] = useState();
+export default function HomeEditSection() {
 	const [isError, setIsError] = useState(false);
-	const nameInputRef = useRef<HTMLInputElement | null>(null);
-	const linkInputRef = useRef<HTMLInputElement | null>(null);
+	const nameInputRef = useRef<any>(null);
+	const linkInputRef = useRef<any>(null);
 
-	const deleteItem = async (id) => {
-		setIsError(false);
-		await deleteNavItem(id);
-		router.refresh();
-	};
-	const handler1 = async () => {
+	const handler = async () => {
 		if (
 			nameInputRef.current?.value &&
 			linkInputRef.current?.value
 		) {
 			setIsError(false);
 			const name = nameInputRef.current?.value as string;
-			const link = linkInputRef.current?.value as string;
 			const newItem = new MenuNavItem(
 				'',
 				name,
@@ -44,9 +31,12 @@ export default function HomeEditSection({ menuItems }) {
 				[],
 			);
 
-			createNavItem(newItem);
-
-			router.refresh();
+			await createNavItem({
+				id: '',
+				title: name,
+				link: '/em-construcao',
+				subItems: [],
+			});
 		} else {
 			setIsError(true);
 		}
@@ -74,7 +64,7 @@ export default function HomeEditSection({ menuItems }) {
 						<div className="w-7/12"></div>
 						<Button
 							className="self-end"
-							onClick={handler1}
+							onClick={handler}
 						>
 							Adicionar
 						</Button>
@@ -97,10 +87,6 @@ export default function HomeEditSection({ menuItems }) {
 					</div>
 				</CardFooter>
 			</Card>
-			<TableComponent
-				deleteFun={deleteItem}
-				menuItems={menuItems}
-			/>
 		</div>
 	);
 }

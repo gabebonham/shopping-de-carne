@@ -9,35 +9,21 @@ import {
 	CardTitle,
 } from '@/components/ui/card';
 import Item from '@/model/Item';
-import Breadcrumbs from '@/pages/home/_components/BreadCrumbs';
-import Layout from '@/pages/home/_components/LayoutTemplate';
-import cookies from 'js-cookie';
-import { useEffect } from 'react';
-import { GetServerSideProps } from 'next';
+import Breadcrumbs from '@/app/home/_components/BreadCrumbs';
+import Layout from '@/app/home/_components/LayoutTemplate';
 import { getBranches } from '@/app/admin/home/_service/CompanyService';
 import { getNavItems } from '@/app/admin/home/_service/MenuNavService';
 import BreadCrumbItem from '@/model/BreadCrumbItem';
+import AddCarButton from '@/app/home/_components/AddCarButton';
 
-export async function getServerSideProps({
+export default async function ProductPage({
 	params,
 }: {
-	params: { id: string; category: string };
+	params: { category: string; id: string };
 }) {
-	const product = (await getProductByIdAndCategory(
-		params.id,
-		params.category,
-	)) as Item;
-	const serializedProduct = {
-		id: product.id,
-		name: product.name,
-		category: product.category,
-		price: product.price,
-		description: product.description,
-		imageUrl: product.imageUrl,
-		link: '/' + product.category + '/' + product.id,
-		isBestSeller: product.isBestSeller,
-		isPromotion: product.isPromotion,
-	};
+	const { category, id } = await params;
+	const product = (await getProductByIdAndCategory(id, category)) as Item;
+
 	const branches = (await getBranches()).map((b) => ({
 		id: b.id,
 		city: b.city,
@@ -45,19 +31,9 @@ export async function getServerSideProps({
 	const items = (await getNavItems()).map((i) => ({
 		title: i.title,
 		link: i.link,
-		subItems: [],
+		subItems: i.subItems,
 		id: i.id,
 	}));
-	return {
-		props: {
-			product: serializedProduct,
-			branches,
-			items,
-		},
-	};
-}
-
-export default function ProductPage({ items, product, branches }) {
 	const breadCrumbs: BreadCrumbItem[] = [
 		new BreadCrumbItem('Home', '/home'),
 		new BreadCrumbItem('Produtos', '/products'),
@@ -94,9 +70,9 @@ export default function ProductPage({ items, product, branches }) {
 							{product.description}
 						</CardDescription>
 						<CardFooter className="h-full">
-							<Button className="">
-								Comprar
-							</Button>
+							<AddCarButton
+								item={product.mapToSimpleObject()}
+							/>
 						</CardFooter>
 					</CardContent>
 				</Card>

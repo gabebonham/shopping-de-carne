@@ -1,3 +1,4 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import {
 	Table,
@@ -10,17 +11,19 @@ import {
 	TableRow,
 } from '@/components/ui/table';
 import MenuNavItem from '@/model/MenuNavItem';
+import { deleteNavItem } from '../_service/MenuNavService';
 
 export default function TableComponent({
 	menuItems,
-	deleteFun,
 }: {
 	menuItems: MenuNavItem[];
-	deleteFun: Function;
 }) {
 	const items = menuItems.map(
 		(i) => new MenuNavItem(i.id, i.title, i.link, i.subItems),
 	);
+	const deleteItem = async (id) => {
+		await deleteNavItem(id);
+	};
 	return (
 		<Table>
 			<TableHeader>
@@ -49,7 +52,7 @@ export default function TableComponent({
 						<TableCell className="items-end col-span-4">
 							<Button
 								onClick={(e) =>
-									deleteFun(
+									deleteItem(
 										item.id,
 									)
 								}

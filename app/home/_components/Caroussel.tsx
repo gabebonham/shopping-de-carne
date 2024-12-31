@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 
@@ -18,7 +19,7 @@ export default function CarouselPlugin({
 	items: Array<CarousselItem>;
 }) {
 	const plugin = React.useRef(
-		Autoplay({ delay: 10000, stopOnInteraction: false }),
+		Autoplay({ delay: 2000, stopOnInteraction: false }),
 	);
 
 	return (
@@ -31,9 +32,9 @@ export default function CarouselPlugin({
 			<CarouselContent>
 				{items.map((i, index) => (
 					<CarouselItem key={index}>
-						<div className=" p-0 m-0">
-							<Card className="p-4 m-0">
-								<CardContent className="flex h-80 items-center justify-center p-0 m-0">
+						<div className=" p-4 m-0">
+							<Card className="p-0 m-0">
+								<CardContent className="flex h-80 items-center justify-center p-0 m-0 ">
 									<Image
 										alt="currentImage"
 										width="500"

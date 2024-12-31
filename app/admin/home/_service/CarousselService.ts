@@ -1,6 +1,6 @@
 import CarousselItem from '@/model/CarousselItemModel';
 
-function getCarousselItems() {
+async function getCarousselItems() {
 	return [
 		new CarousselItem('aa.jpg'),
 		new CarousselItem('meat2.jpg'),

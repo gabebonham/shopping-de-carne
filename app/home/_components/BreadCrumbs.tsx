@@ -26,10 +26,13 @@ export default function Breadcrumbs({
 			<BreadcrumbList key="a">
 				{items.map((p, i) => (
 					<BreadcrumbItem key={i}>
-						<BreadcrumbLink href={p.link}>
+						<BreadcrumbLink
+							href={p.link}
+							className="text-black"
+						>
 							{p.name}
 						</BreadcrumbLink>
-						<ChevronRight />
+						<ChevronRight className="text-white" />
 					</BreadcrumbItem>
 				))}
 			</BreadcrumbList>

@@ -16,12 +16,13 @@ import {
 import MenuNavItem from '@/model/MenuNavItem';
 import Link from 'next/link';
 
-export default function MenuBar({ items = [] }: { items: MenuNavItem[] }) {
-	const gridCols = items.length;
+export default function MenuBar({ items }: { items: MenuNavItem[] }) {
 	return (
-		<Menubar className={`flex flex-row rounded-none `}>
+		<Menubar
+			className={`flex flex-row rounded-none p-0 outline-none bg-white`}
+		>
 			{items.map((i) => (
-				<MenubarMenu>
+				<MenubarMenu key={i.id}>
 					<MenubarTrigger className="justify-center text-xs w-full">
 						{i.title}
 					</MenubarTrigger>
@@ -30,7 +31,10 @@ export default function MenuBar({ items = [] }: { items: MenuNavItem[] }) {
 						className="w-96"
 					>
 						{i.subItems.map((s) => (
-							<div className="justify-center items-center text-center self-stretch">
+							<div
+								key={s}
+								className="justify-center items-center text-center self-stretch"
+							>
 								<MenubarItem className="self-center self-stretch items-center">
 									<Link
 										href={

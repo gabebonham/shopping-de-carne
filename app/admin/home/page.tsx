@@ -9,9 +9,16 @@ import HomeEditSection from './_components/HomeEditSection';
 import { getNavItems } from './_service/MenuNavService';
 import Link from 'next/link';
 import { Separator } from '@/components/ui/separator';
+import TableComponent from './_components/TableComponent';
 
 export default async function AdminHome() {
-	let menuItems = await getNavItems();
+	let menuItems = (await getNavItems()).map((i) => ({
+		id: i.id,
+		title: i.title,
+		link: i.link,
+		subItems: i.subItems,
+	}));
+
 	return (
 		<SideBarComponent>
 			<Link
@@ -21,7 +28,8 @@ export default async function AdminHome() {
 				Retornar para Home
 			</Link>
 			<Separator className="m-8" />
-			<HomeEditSection menuItems={menuItems} />
+			<HomeEditSection />
+			<TableComponent menuItems={menuItems} />
 		</SideBarComponent>
 	);
 }

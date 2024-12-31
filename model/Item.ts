@@ -1,4 +1,5 @@
 export default class Item {
+	uniqueId: number;
 	id: string;
 	price: number;
 	name: string;
@@ -10,6 +11,7 @@ export default class Item {
 	isBestSeller: boolean;
 
 	constructor(
+		uniqueId: number,
 		id: string,
 		price: number,
 		name: string,
@@ -20,6 +22,7 @@ export default class Item {
 		isPromotion: boolean,
 		isBestSeller: boolean,
 	) {
+		this.uniqueId = uniqueId;
 		this.id = id;
 		this.price = price;
 		this.name = name;
@@ -35,6 +38,7 @@ export default class Item {
 	}
 	public mapToSimpleObject() {
 		return {
+			uniqueId: this.uniqueId,
 			id: this.id,
 			name: this.name,
 			category: this.category,
