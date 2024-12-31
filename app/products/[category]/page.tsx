@@ -9,6 +9,7 @@ import HomeSection from '@/app/home/_components/HomeSection';
 import Layout from '@/app/home/_components/LayoutTemplate';
 import { ItemDto } from '@/model/ItemDto';
 import BreadCrumbItem from '@/model/BreadCrumbItem';
+import LayoutTemplate from '@/app/home/_components/LayoutTemplate';
 type Params = Promise<{
 	category: string;
 }>;
@@ -34,7 +35,7 @@ export default async function CategoryPage(props: { params: Params }) {
 		new BreadCrumbItem('Produtos', '/products'),
 	] as BreadCrumbItem[];
 	return (
-		<Layout items={items} newBranches={branches}>
+		<LayoutTemplate items={items} newBranches={branches}>
 			<Breadcrumbs items={breadCrumbs} />
 			<div className="w-7/12 place-self-center">
 				<h1 className="place-self-center m-8 text-3xl">
@@ -48,6 +49,6 @@ export default async function CategoryPage(props: { params: Params }) {
 					categoriesToShow={[category]}
 				/>
 			</div>
-		</Layout>
+		</LayoutTemplate>
 	);
 }

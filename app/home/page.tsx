@@ -29,9 +29,8 @@ export default async function Home() {
 
 	return (
 		<LayoutTemplate items={menuItems} newBranches={branches}>
-			<div>
+			<div id="homeDiv" className="bg-white rounded-2xl m-8">
 				<CarouselPlugin items={carousselItems} />
-
 				<DisplayProductsComponent
 					header="Ofertas"
 					items={allItems}

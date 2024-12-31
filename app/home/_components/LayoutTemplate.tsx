@@ -14,6 +14,7 @@ import MenuNavItem from '@/model/MenuNavItem';
 import CarComponent from './CarComponent';
 import ItemsHistoryBodyComponent from './ItemsHistoryComponent';
 import ItemsHistoryComponent from './ItemsHistoryComponent';
+import EditSiteComponent from './EditSiteComponent';
 
 export default function LayoutTemplate({
 	items = [],
@@ -39,8 +40,11 @@ export default function LayoutTemplate({
 	const footerInfo = [manufacturerInfo, contactInfo];
 
 	return (
-		<div>
-			<header className="sticky top-0 z-50 shadow-lg bg-gradient-to-br from-teal-800 to-sky-100">
+		<div
+			id="parentOfEditComponent"
+			className=" bg-[rgba(60,60,60,0.5)] "
+		>
+			<header className="sticky top-0 z-50 shadow-lg bg-[rgba(10,10,10,0.5)]">
 				<div className="py-2 px-8 h-28 flex flex-row">
 					<Image
 						alt="logo"
@@ -51,10 +55,10 @@ export default function LayoutTemplate({
 						placeholder="Pesquisa..."
 						className="w-6/12 self-center drop-shadow-md"
 					/>
-					<button className="flex text-xs w-auto mt-10 px-8">
+					<button className="flex text-xs w-auto mt-10 px-8 text-white">
 						<ItemsHistoryComponent />
 					</button>
-					<button className="flex text-xs w-auto mt-10 pl-2 pr-4">
+					<button className="flex text-xs w-auto mt-10 pl-2 pr-4 text-white">
 						<CarComponent />
 					</button>
 					<ComboboxDemo branches={newBranches} />
@@ -62,8 +66,9 @@ export default function LayoutTemplate({
 				</div>
 				<MenuBar items={items} />
 			</header>
-			<div className="bg-gradient-to-br from-teal-800 to-gray-500 via-teal-100">
+			<div className="">
 				{children}
+				<EditSiteComponent />
 			</div>
 
 			<footer

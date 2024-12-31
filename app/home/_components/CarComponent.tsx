@@ -8,15 +8,21 @@ import {
 import { BaggageClaim } from 'lucide-react';
 import cookie from 'js-cookie';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+
 export default function CarComponent() {
+	const pathname = usePathname();
+	console.log(pathname);
 	const [currentItems, setCurrentItems] = useState(0);
 	const handler = () => {
 		const items = cookie.get('items') || 0;
 		setCurrentItems(items);
 	};
 	const removeItems = () => {
-		cookie.remove('items', { path: '' });
-		cookie.remove('itemsList', { path: '' });
+		cookie.remove('items', { path: '/' });
+		cookie.remove('itemsList', {
+			path: '/',
+		});
 		setCurrentItems(0);
 	};
 	return (
@@ -34,7 +40,10 @@ export default function CarComponent() {
 				{currentItems !== 0 ? (
 					<div>
 						<Button>Checkout</Button>
-						<Button onClick={removeItems}>
+						<Button
+							className="ml-4"
+							onClick={removeItems}
+						>
 							Zerar Carrinho
 						</Button>
 					</div>

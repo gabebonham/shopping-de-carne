@@ -13,6 +13,7 @@ import MenuNavItem from '@/model/MenuNavItem';
 import { getNavItems } from '@/app/admin/home/_service/MenuNavService';
 import BreadCrumbItem from '@/model/BreadCrumbItem';
 import { redirect } from 'next/navigation';
+import LayoutTemplate from '../home/_components/LayoutTemplate';
 
 export default async function ProductsPage() {
 	const productss = ((await getProducts()) as Item[]).map((p) =>
@@ -39,7 +40,7 @@ export default async function ProductsPage() {
 	] as BreadCrumbItem[];
 
 	return (
-		<Layout items={items} newBranches={branches}>
+		<LayoutTemplate items={items} newBranches={branches}>
 			<Breadcrumbs items={breadCrumbs} />
 			<h1 className="justify-self-center text-3xl m-8">
 				Todos os Produtos
@@ -55,6 +56,6 @@ export default async function ProductsPage() {
 					items={products}
 				/>
 			</div>
-		</Layout>
+		</LayoutTemplate>
 	);
 }

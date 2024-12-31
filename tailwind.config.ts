@@ -9,6 +9,13 @@ export default {
 	],
 	theme: {
 		extend: {
+			backgroundImage: {
+				back: "url('/headerBg.gif')",
+				back1: "url('/back2.gif')",
+				back2: "url('/back3.gif')",
+				back3: "url('/back4.gif')",
+				back4: "url('/back5.gif')",
+			},
 			colors: {
 				background: 'var(--background)',
 				foreground: 'var(--foreground)',
@@ -18,6 +25,7 @@ export default {
 				red: colors.red,
 				blue: colors.sky,
 				yellow: colors.amber,
+				op: 'rgba(100,100,100,0.5',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

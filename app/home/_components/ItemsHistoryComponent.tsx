@@ -7,15 +7,19 @@ import {
 } from '@/components/ui/popover';
 import { Book } from 'lucide-react';
 import cookie from 'js-cookie';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ItemsHistoryBodyComponent from './ItemsHistoryBodyComponent';
+
 type listType = {
 	name: string;
 	price: string;
 };
+
 export default function ItemsHistoryComponent() {
 	const [itemList, setItemList] = useState<listType[]>([]);
-	const handler = async () => {
+	const [flag, set] = useState(false);
+
+	const fetchItems = () => {
 		const itemListString = cookie.get('itemsList') as string;
 		if (itemListString) {
 			const itemsDataList = itemListString.split('-');
@@ -32,10 +36,18 @@ export default function ItemsHistoryComponent() {
 			setItemList([]);
 		}
 	};
+
+	useEffect(() => {
+		fetchItems(); // Fetch items when the component mounts
+	}, [flag]); // Empty dependency array ensures it runs once
+
 	return (
 		<Popover>
 			<PopoverTrigger asChild>
-				<span className="flex w-36" onClick={handler}>
+				<span
+					className="flex w-36"
+					onClick={(e) => set(!flag)}
+				>
 					<Book className="size-4" /> Histórico de
 					Compras
 				</span>
