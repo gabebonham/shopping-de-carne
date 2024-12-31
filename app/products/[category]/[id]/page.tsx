@@ -15,13 +15,12 @@ import { getBranches } from '@/app/admin/home/_service/CompanyService';
 import { getNavItems } from '@/app/admin/home/_service/MenuNavService';
 import BreadCrumbItem from '@/model/BreadCrumbItem';
 import AddCarButton from '@/app/home/_components/AddCarButton';
-
-export default async function ProductPage({
-	params,
-}: {
-	params: { category: string; id: string };
-}) {
-	const { category, id } = await params;
+type Params = Promise<{
+	category: string;
+	id: string;
+}>;
+export default async function ProductPage(props: { params: Params }) {
+	const { category, id } = await props.params;
 	const product = (await getProductByIdAndCategory(id, category)) as Item;
 
 	const branches = (await getBranches()).map((b) => ({

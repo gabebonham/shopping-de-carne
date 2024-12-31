@@ -9,8 +9,11 @@ import HomeSection from '@/app/home/_components/HomeSection';
 import Layout from '@/app/home/_components/LayoutTemplate';
 import { ItemDto } from '@/model/ItemDto';
 import BreadCrumbItem from '@/model/BreadCrumbItem';
-
-export default async function CategoryPage({ params: { category } }) {
+type Params = Promise<{
+	category: string;
+}>;
+export default async function CategoryPage(props: { params: Params }) {
+	const { category } = await props.params;
 	const products = (await getProductsByCategory(category)) as Item[];
 	const branches = (await getBranches()).map((b) => ({
 		id: b.id,
