@@ -4,17 +4,28 @@ import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 
 export default function EditSiteComponent() {
-	const [isBackground, setBackground] = useState(true);
+	const backList = [
+		'bg-back3',
+		'bg-back',
+		'bg-back5',
+		'bg-back6',
+		'bg-back7',
+	];
+	const [isBackground, setBackground] = useState(backList[0]);
+	const [counter, count] = useState(0);
 	const [isLayout, setLayout] = useState(true);
 	const changeBackground = () => {
-		if (isBackground) {
-			document.body.classList.remove('bg-back3');
-			document.body.classList.add('bg-back');
+		document.body.classList.remove(backList[counter]);
+		if (counter == 4) {
+			document.body.classList.add(backList[0]);
 		} else {
-			document.body.classList.remove('bg-back');
-			document.body.classList.add('bg-back3');
+			document.body.classList.add(backList[counter + 1]);
 		}
-		setBackground(!isBackground);
+		if (counter == 4) {
+			count(0);
+		} else {
+			count(counter + 1);
+		}
 	};
 	const changeLayout = () => {
 		if (isLayout) {

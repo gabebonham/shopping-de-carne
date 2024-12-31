@@ -15,6 +15,9 @@ export default {
 				back2: "url('/back3.gif')",
 				back3: "url('/back4.gif')",
 				back4: "url('/back5.gif')",
+				back5: "url('/back6.jpg')",
+				back6: "url('/back7.jpg')",
+				back7: "url('/back8.jpg')",
 			},
 			colors: {
 				background: 'var(--background)',
