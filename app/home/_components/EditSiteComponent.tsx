@@ -4,17 +4,11 @@ import { Button } from '@/components/ui/button';
 import { useEffect, useState } from 'react';
 
 export default function EditSiteComponent() {
-	const backList = [
-		'bg-back3',
-		'bg-back',
-		'bg-back1',
-		'bg-back5',
-		'bg-back7',
-		'bg-back8',
-	];
+	const backList = ['bg-back1', 'bg-back2', 'bg-back3', 'bg-back4'];
 	const [counter, count] = useState(0);
 	const [isLayout, setLayout] = useState(true);
 	const [trigger, toggle] = useState(false);
+	const [flag, setFlag] = useState(false);
 	useEffect(() => {
 		const handler = async () => {
 			changeBackground();
@@ -22,20 +16,23 @@ export default function EditSiteComponent() {
 		handler();
 	}, [trigger]);
 	const changeBackground = async () => {
-		console.log(counter);
-		await document.body.classList.remove(backList[counter]);
-		if (counter == 5) {
-			await document.body.classList.add(backList[0]);
-		} else {
-			await document.body.classList.add(
-				backList[counter + 1],
-			);
+		if (flag) {
+			await document.body.classList.remove(backList[counter]);
+			if (counter == 3) {
+				await document.body.classList.add(backList[0]);
+			} else {
+				await document.body.classList.add(
+					backList[counter + 1],
+				);
+			}
+			if (counter == 3) {
+				count(0);
+			} else {
+				count(counter + 1);
+			}
 		}
-		if (counter == 5) {
-			count(0);
-		} else {
-			count(counter + 1);
-		}
+
+		setFlag(true);
 	};
 	const changeLayout = () => {
 		if (isLayout) {

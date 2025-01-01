@@ -74,7 +74,7 @@ export default function LayoutTemplate({
 			<footer
 				className={`grid grid-cols-${
 					footerInfo.length + 1
-				} grid-rows-1 bg-gradient-to-br from-teal-800 to-sky-100`}
+				} grid-rows-1 bg-black text-white`}
 			>
 				<FooterAcordeon key={'a'} />
 				{footerInfo &&

@@ -10,12 +10,10 @@ export default {
 	theme: {
 		extend: {
 			backgroundImage: {
-				back: "url('/headerBg.gif')",
 				back1: "url('/back9.jpg')",
-				back3: "url('/back4.gif')",
-				back5: "url('/back6.jpg')",
-				back7: "url('/back8.jpg')",
-				back8: "url('/back11.jpg')",
+				back2: "url('/headerBg.gif')",
+				back3: "url('/back8.jpg')",
+				back4: "url('/back4.gif')",
 			},
 			colors: {
 				background: 'var(--background)',
