@@ -5,7 +5,7 @@ import { Button } from '../../../components/ui/button';
 import MenuBar from './MenuBar';
 import FooterAcordeon from '@/app/home/_components/FooterAcordeon';
 import FooterInfo from './FooterInfo';
-import { BaggageClaim, Book } from 'lucide-react';
+import { AlignJustify, BaggageClaim, Book } from 'lucide-react';
 import ComboboxDemo from './ComboBox';
 import Branch from '@/model/BranchModel';
 import { getBranches } from '@/app/admin/home/_service/CompanyService';
@@ -15,6 +15,7 @@ import CarComponent from './CarComponent';
 import ItemsHistoryBodyComponent from './ItemsHistoryComponent';
 import ItemsHistoryComponent from './ItemsHistoryComponent';
 import EditSiteComponent from './EditSiteComponent';
+import MbMenuComponent from '../_componentss/MbMenuComponent';
 
 export default function LayoutTemplate({
 	items = [],
@@ -42,10 +43,18 @@ export default function LayoutTemplate({
 	return (
 		<div
 			id="parentOfEditComponent"
-			className=" bg-[rgba(60,60,60,0.5)] "
+			className=" bg-[rgba(60,60,60,0.5)] w-fit"
 		>
-			<header className="sticky top-0 z-50 shadow-lg bg-[rgba(10,10,10,0.5)]">
-				<div className="py-2 px-8 h-28 flex flex-row">
+			<header className="sticky top-0 z-50 w-auto shadow-lg bg-[rgba(10,10,10,0.5)]">
+				<div className="smax:hidden h-28 py-2 px-8 flex items-center justify-between">
+					<Image
+						alt="logo"
+						src={logo}
+						className="size-24"
+					/>
+					<MbMenuComponent />
+				</div>
+				<div className="smin:max-smax:hidden py-2 px-8 h-28 flex flex-row">
 					<Image
 						alt="logo"
 						src={logo}

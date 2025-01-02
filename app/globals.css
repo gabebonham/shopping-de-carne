@@ -4,6 +4,9 @@
 
 @layer base {
 	:root {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
 		--radius: 0.5rem;
 		--sidebar-background: 0 0% 98%;
 		--sidebar-foreground: 240 5.3% 26.1%;

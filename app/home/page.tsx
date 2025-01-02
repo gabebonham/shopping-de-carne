@@ -29,7 +29,10 @@ export default async function Home() {
 
 	return (
 		<LayoutTemplate items={menuItems} newBranches={branches}>
-			<div id="homeDiv" className="bg-white rounded-2xl m-8">
+			<div
+				id="homeDiv"
+				className="bg-white rounded-2xl smin:max-smax:m-0 m-8"
+			>
 				<CarouselPlugin items={carousselItems} />
 				<DisplayProductsComponent
 					header="Ofertas"

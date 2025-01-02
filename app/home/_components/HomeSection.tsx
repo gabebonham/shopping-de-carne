@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation';
 import Item from '@/model/Item';
 import cookie from 'js-cookie';
 import { Button } from '@/components/ui/button';
+import { ShoppingCart } from 'lucide-react';
 
 export default function HomeSection({
 	items,
@@ -63,9 +64,18 @@ export default function HomeSection({
 	};
 	return (
 		<div className={'rounded-lg  ' + className}>
-			<Card className={'outline-none justify-items-center'}>
-				<h1 className="p-4 text-2xl">{header}</h1>
-				<div className="grid grid-cols-3 gap-y-24 gap-x-8 py-12 w-auto">
+			<Card
+				className={
+					'outline-none smin:max-smax:p-0 smin:max-smax:m-0 smax:justify-items-center'
+				}
+			>
+				<h1 className="flex p-4 text-2xl justify-self-center">
+					{header}
+				</h1>
+				<Button className="flex justify-self-center">
+					asdf
+				</Button>
+				<div className="grid smin:max-smax:gap-y-4 smin:max-smax:m-0 smin:max-smax:gap-x-0 smin:max-smax:grid-cols-2  smax:grid-cols-3 smax:gap-y-24 smax:gap-x-8 smax:py-12 ">
 					{data.map(
 						(p) =>
 							p.show && (
@@ -76,7 +86,7 @@ export default function HomeSection({
 											.uniqueId
 									}
 									className={
-										'transition hover:-translate-y-1.5 animate-fadeIn shadow-lg border-0 outline-none '
+										'smin:max-smax:h-56 smin:max-smax:flex smin:max-smax:flex-col smin:max-smax:justify-center smin:max-smax:p-4 smin:max-smax:m-0 smin:max-smax:w-44 transition smax:hover:-translate-y-1.5 animate-fadeIn smax:shadow-lg border-0 outline-none '
 									}
 								>
 									<Link
@@ -93,7 +103,7 @@ export default function HomeSection({
 											)
 										}
 										className={
-											' size-52 grid grid-cols-1 grid-rows-2 '
+											'smin:max-smax:size-40 smax:size-52 grid grid-cols-1 grid-rows-2 '
 										}
 									>
 										<CardHeader className="justify-self-center">
@@ -128,7 +138,7 @@ export default function HomeSection({
 											</CardDescription>
 										</CardHeader>
 									</Link>
-									<CardFooter>
+									<CardFooter className="smin:max-smax:p-4 smin:max-smax:flex smin:max-smax:justify-center ">
 										<Button
 											onClick={(
 												e,
@@ -137,10 +147,14 @@ export default function HomeSection({
 													p.item,
 												)
 											}
+											className="smin:max-smax:w-12 "
 										>
-											Adicionar
-											ao
-											Carrinho
+											<ShoppingCart className="smax:hidden" />
+											<p className="smin:max-smax:hidden">
+												Adicionar
+												ao
+												Carrinho
+											</p>
 										</Button>
 									</CardFooter>
 								</Card>

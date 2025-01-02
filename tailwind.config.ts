@@ -8,6 +8,10 @@ export default {
 		'./app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
+		screens: {
+			smin: '1px',
+			smax: '480px',
+		},
 		extend: {
 			backgroundImage: {
 				back1: "url('/back9.jpg')",
@@ -44,6 +48,15 @@ export default {
 				sm: 'calc(var(--radius) - 4px)',
 			},
 			keyframes: {
+				'slide-in-right': {
+					'0%': {
+						visibility: 'visible',
+						transform: 'translate3d(100%, 0, 0)',
+					},
+					'100%': {
+						transform: 'translate3d(0, 0, 0)',
+					},
+				},
 				fadeIn: {
 					'0%': {
 						opacity: '0',
@@ -74,6 +87,8 @@ export default {
 				'accordion-down':
 					'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
+				'slide-in-right':
+					'slide-in-right 0.5s ease-in ',
 			},
 		},
 	},

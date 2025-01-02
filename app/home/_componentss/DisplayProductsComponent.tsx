@@ -5,6 +5,7 @@ import HomeSection from '../_components/HomeSection';
 import FilterMenu from '../_components/FilterMenu';
 import { CategoryEnum } from '@/app/_enums/Enums';
 import { ItemDto } from '@/model/ItemDto';
+import { Button } from '@/components/ui/button';
 
 export default function DisplayProductsComponent({
 	items,
@@ -17,8 +18,8 @@ export default function DisplayProductsComponent({
 
 	const [flag, setFlag] = useState(false);
 	return (
-		<div className="grid grid-cols-3 grid-rows-1 grid-flow-col auto-cols-max px-24 my-8">
-			<div className="place-items-center col-span-1">
+		<div className="smax:grid smax:grid-cols-3 smax:grid-rows-1 smax:grid-flow-col smax:auto-cols-max smax:px-24 smax:my-8">
+			<div className="smin:max-smax:hidden  place-items-center col-span-1">
 				<FilterMenu
 					categoriesToShow={categoriesToShow}
 					setCategoriesToShow={
@@ -28,7 +29,8 @@ export default function DisplayProductsComponent({
 					flag={flag}
 				/>
 			</div>
-			<div className="col-span-2">
+
+			<div className="smax:col-span-2">
 				<HomeSection
 					header={header}
 					flag={flag}

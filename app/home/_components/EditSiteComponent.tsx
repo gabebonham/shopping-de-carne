@@ -61,7 +61,7 @@ export default function EditSiteComponent() {
 		setLayout(!isLayout);
 	};
 	return (
-		<div className="flex fixed bottom-0 right-0 z-100 shadow-lg rounded-2xl bg-[rgba(150,40,40,0.2)] w-fit m-2 p-4">
+		<div className="smin:max-smax:hidden flex fixed bottom-0 right-0 z-100 shadow-lg rounded-2xl bg-[rgba(150,40,40,0.2)] w-fit m-2 p-4">
 			<Button
 				onClick={(e) => {
 					toggle(!trigger);
