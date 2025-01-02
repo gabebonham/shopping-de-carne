@@ -35,11 +35,13 @@ export default async function Home() {
 			>
 				<CarouselPlugin items={carousselItems} />
 				<DisplayProductsComponent
+					showFilter={true}
 					header="Ofertas"
 					items={allItems}
 				/>
 				<Separator className="w-60 place-self-center" />
 				<DisplayProductsComponent
+					showFilter={true}
 					header="Mais Vendidos"
 					items={allItems}
 				/>

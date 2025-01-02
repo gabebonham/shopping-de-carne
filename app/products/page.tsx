@@ -44,6 +44,7 @@ export default async function ProductsPage() {
 		<LayoutTemplate items={items} newBranches={branches}>
 			<Breadcrumbs items={breadCrumbs} />
 			<DisplayProductsComponent
+				showFilter={true}
 				header={'Todos os Produtos'}
 				items={products}
 			/>

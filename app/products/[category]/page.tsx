@@ -39,6 +39,7 @@ export default async function CategoryPage(props: { params: Params }) {
 		<LayoutTemplate items={items} newBranches={branches}>
 			<Breadcrumbs items={breadCrumbs} />
 			<DisplayProductsComponent
+				showFilter={false}
 				header={category}
 				items={serializedProducts}
 			/>

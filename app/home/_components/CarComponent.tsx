@@ -41,10 +41,10 @@ export default function CarComponent() {
 					Itens: {currentItems}
 				</div>
 				{currentItems !== 0 ? (
-					<div className="p-4">
+					<div className="flex">
 						<Button>Checkout</Button>
 						<Button
-							className="flex flex-col"
+							className="ml-4"
 							onClick={removeItems}
 						>
 							Zerar Carrinho
