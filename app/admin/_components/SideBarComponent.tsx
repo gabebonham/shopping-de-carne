@@ -8,7 +8,7 @@ export default function SideBarComponent({
 	children: React.ReactNode;
 }) {
 	return (
-		<SidebarProvider>
+		<SidebarProvider className="bg-white">
 			<Sidebar />
 			<SidebarTrigger />
 
