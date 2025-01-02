@@ -17,6 +17,7 @@ import Item from '@/model/Item';
 import cookie from 'js-cookie';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
+import FilterPopUpComponent from '../_componentss/FilterPopUpComponent';
 
 export default function HomeSection({
 	items,
@@ -24,14 +25,19 @@ export default function HomeSection({
 	categoriesToShow,
 	flag,
 	header,
+	setCategoriesToShow,
+	setFlag,
 }: {
 	items: Array<ItemDto>;
 	className: string;
 	categoriesToShow: string[];
 	flag: boolean;
 	header: string;
+	setCategoriesToShow: (value: string[]) => void;
+	setFlag: (value: boolean) => void;
 }) {
 	const router = useRouter();
+
 	const handler = (item: Item) => {
 		router.push('/' + item.link);
 	};
@@ -62,6 +68,7 @@ export default function HomeSection({
 			cookie.set('itemsList', itemsList + '-' + newItem);
 		}
 	};
+
 	return (
 		<div className={'rounded-lg  ' + className}>
 			<Card
@@ -72,9 +79,7 @@ export default function HomeSection({
 				<h1 className="flex p-4 text-2xl justify-self-center">
 					{header}
 				</h1>
-				<Button className="flex justify-self-center">
-					asdf
-				</Button>
+
 				<div className="grid smin:max-smax:gap-y-4 smin:max-smax:m-0 smin:max-smax:gap-x-0 smin:max-smax:grid-cols-2  smax:grid-cols-3 smax:gap-y-24 smax:gap-x-8 smax:py-12 ">
 					{data.map(
 						(p) =>

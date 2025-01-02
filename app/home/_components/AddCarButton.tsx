@@ -12,5 +12,9 @@ export default function AddCarButton({ item }: { item: any }) {
 			cookie.set('itemsList', itemsList + '-' + newItem);
 		}
 	};
-	return <Button onClick={addCar}>Adicionar ao Carrinho</Button>;
+	return (
+		<Button className="smin:max-smax:mt-4" onClick={addCar}>
+			Adicionar ao Carrinho
+		</Button>
+	);
 }

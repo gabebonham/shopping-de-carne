@@ -72,6 +72,9 @@ export default function FilterMenu({
 								e.valueOf() as boolean,
 							)
 						}
+						checked={categoriesToShow.includes(
+							item,
+						)}
 					/>
 				</MenubarMenu>
 			))}

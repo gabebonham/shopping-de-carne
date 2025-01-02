@@ -9,7 +9,8 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from '@/components/ui/dialog';
-import { AlignJustify } from 'lucide-react';
+import { AlignJustify, ShoppingBasket } from 'lucide-react';
+import CarPopUp from './CarPopUp';
 
 export default function MbMenuComponent() {
 	return (
@@ -19,11 +20,9 @@ export default function MbMenuComponent() {
 			</DialogTrigger>
 			<DialogContent className="">
 				<DialogHeader className="">
-					<DialogTitle className="">
-						asdf
-					</DialogTitle>
-					<DialogDescription className="">
-						<Button>asd</Button>
+					<DialogTitle className=""></DialogTitle>
+					<DialogDescription className="flex flex-col mt-8 ">
+						<CarPopUp />
 					</DialogDescription>
 				</DialogHeader>
 			</DialogContent>

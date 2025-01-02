@@ -10,7 +10,7 @@ export default function FooterAcordeon() {
 		<Accordion
 			type="single"
 			collapsible
-			className="flex flex-col place-self-start items-start justify-self-center"
+			className="flex flex-col place-self-start items-start justify-self-center smin:max-smax:items-center"
 		>
 			<AccordionItem
 				value="item-1"

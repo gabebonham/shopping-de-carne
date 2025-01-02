@@ -16,7 +16,11 @@ import ItemsHistoryBodyComponent from './ItemsHistoryComponent';
 import ItemsHistoryComponent from './ItemsHistoryComponent';
 import EditSiteComponent from './EditSiteComponent';
 import MbMenuComponent from '../_componentss/MbMenuComponent';
-
+type ContactType = {
+	id: number;
+	title: string;
+	link: string;
+};
 export default function LayoutTemplate({
 	items = [],
 	newBranches = [],
@@ -27,18 +31,21 @@ export default function LayoutTemplate({
 	children: React.ReactNode;
 }) {
 	const contactInfo = [
-		{ title: 'Contate-nos', link: '/em-construcao' },
-		{ title: 'Minha conta', link: '/em-construcao' },
-		{ title: 'Sobre nós', link: '/em-construcao' },
-	];
+		{ id: 1, title: 'Contate-nos', link: '/em-construcao' },
+		{ id: 2, title: 'Minha conta', link: '/em-construcao' },
+		{ id: 3, title: 'Sobre nós', link: '/em-construcao' },
+	] as ContactType[];
 
 	const manufacturerInfo = [
-		{ title: 'Contate-nos', link: '/em-construcao' },
-		{ title: 'Minha conta', link: '/em-construcao' },
-		{ title: 'Sobre nós', link: '/em-construcao' },
-	];
+		{ id: 4, title: 'Contate-nos', link: '/em-construcao' },
+		{ id: 5, title: 'Minha conta', link: '/em-construcao' },
+		{ id: 6, title: 'Sobre nós', link: '/em-construcao' },
+	] as ContactType[];
 
-	const footerInfo = [manufacturerInfo, contactInfo];
+	const footerInfo = [
+		{ id: 1, value: manufacturerInfo },
+		{ id: 2, value: contactInfo },
+	];
 
 	return (
 		<div
@@ -75,31 +82,37 @@ export default function LayoutTemplate({
 				</div>
 				<MenuBar items={items} />
 			</header>
-			<div className="">
+			<div className="w-screen">
 				{children}
 				<EditSiteComponent />
 			</div>
 
 			<footer
-				className={`grid grid-cols-${
+				className={`grid smin:max-max:grid-cols-${
 					footerInfo.length + 1
-				} grid-rows-1 bg-black text-white`}
+				} smin:max-smax:grid-rows-1 bg-black text-white `}
 			>
 				<FooterAcordeon key={'a'} />
-				{footerInfo &&
-					footerInfo.length > 0 &&
-					footerInfo.map((j, i) => (
-						<FooterInfo
-							key={i}
-							header={'Header'}
-							items={
-								Array.isArray(j)
-									? j
-									: []
-							}
-							className="flex flex-col self-center justify-self-center justify-items-end pr-8 items-start"
-						/>
-					))}
+				<div className="flex justify-center gap-12 pt-4">
+					{footerInfo &&
+						footerInfo.length > 0 &&
+						footerInfo.map((j) => (
+							<FooterInfo
+								key={j.id}
+								header={
+									'Header'
+								}
+								items={
+									Array.isArray(
+										j.value,
+									)
+										? j.value
+										: []
+								}
+								className=""
+							/>
+						))}
+				</div>
 			</footer>
 		</div>
 	);

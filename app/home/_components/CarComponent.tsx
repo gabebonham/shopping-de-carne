@@ -28,27 +28,30 @@ export default function CarComponent() {
 	return (
 		<Popover>
 			<PopoverTrigger asChild>
-				<span className="flex w-36" onClick={handler}>
-					<BaggageClaim className="size-4" />
+				<span
+					className="flex items-center"
+					onClick={handler}
+				>
+					<BaggageClaim className="" />
 					Carrinho
 				</span>
 			</PopoverTrigger>
-			<PopoverContent className="w-80 justify-items-center">
+			<PopoverContent className="p-8 justify-items-center">
 				<div className="p-4 flex">
-					<p>Itens: {currentItems}</p>
+					Itens: {currentItems}
 				</div>
 				{currentItems !== 0 ? (
-					<div>
+					<div className="p-4">
 						<Button>Checkout</Button>
 						<Button
-							className="ml-4"
+							className="flex flex-col"
 							onClick={removeItems}
 						>
 							Zerar Carrinho
 						</Button>
 					</div>
 				) : (
-					<p>Carrinho vazio.</p>
+					<div>Carrinho vazio.</div>
 				)}
 			</PopoverContent>
 		</Popover>

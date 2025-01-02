@@ -45,7 +45,7 @@ export default function ItemsHistoryComponent() {
 		<Popover>
 			<PopoverTrigger asChild>
 				<span
-					className="flex w-36"
+					className="flex items-center"
 					onClick={(e) => set(!flag)}
 				>
 					<Book className="size-4" /> Histórico de
@@ -53,15 +53,13 @@ export default function ItemsHistoryComponent() {
 				</span>
 			</PopoverTrigger>
 			<PopoverContent className="w-80 justify-items-center">
-				<div className="p-4 flex">
-					<p>Produtos:</p>
-				</div>
+				<div className="p-4 flex">Produtos:</div>
 				{itemList.length !== 0 ? (
 					<ItemsHistoryBodyComponent
 						items={itemList}
 					/>
 				) : (
-					<p>Nenhum produto comprado.</p>
+					<div>Nenhum produto comprado.</div>
 				)}
 			</PopoverContent>
 		</Popover>

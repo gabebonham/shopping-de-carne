@@ -10,6 +10,7 @@ import Layout from '@/app/home/_components/LayoutTemplate';
 import { ItemDto } from '@/model/ItemDto';
 import BreadCrumbItem from '@/model/BreadCrumbItem';
 import LayoutTemplate from '@/app/home/_components/LayoutTemplate';
+import DisplayProductsComponent from '@/app/home/_componentss/DisplayProductsComponent';
 type Params = Promise<{
 	category: string;
 }>;
@@ -37,18 +38,10 @@ export default async function CategoryPage(props: { params: Params }) {
 	return (
 		<LayoutTemplate items={items} newBranches={branches}>
 			<Breadcrumbs items={breadCrumbs} />
-			<div className="w-7/12 place-self-center">
-				<h1 className="place-self-center m-8 text-3xl">
-					{category}
-				</h1>
-				<HomeSection
-					header=""
-					flag={true}
-					items={serializedProducts}
-					className="shadow-sm"
-					categoriesToShow={[category]}
-				/>
-			</div>
+			<DisplayProductsComponent
+				header={category}
+				items={serializedProducts}
+			/>
 		</LayoutTemplate>
 	);
 }

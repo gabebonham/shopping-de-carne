@@ -14,6 +14,7 @@ import { getNavItems } from '@/app/admin/home/_service/MenuNavService';
 import BreadCrumbItem from '@/model/BreadCrumbItem';
 import { redirect } from 'next/navigation';
 import LayoutTemplate from '../home/_components/LayoutTemplate';
+import DisplayProductsComponent from '../home/_componentss/DisplayProductsComponent';
 
 export default async function ProductsPage() {
 	const productss = ((await getProducts()) as Item[]).map((p) =>
@@ -42,20 +43,10 @@ export default async function ProductsPage() {
 	return (
 		<LayoutTemplate items={items} newBranches={branches}>
 			<Breadcrumbs items={breadCrumbs} />
-			<h1 className="justify-self-center text-3xl m-8">
-				Todos os Produtos
-			</h1>
-			<div className="place-self-center w-7/12">
-				<HomeSection
-					header=""
-					categoriesToShow={Object.values(
-						CategoryEnum,
-					).map((c) => c.valueOf())}
-					className=""
-					flag={true}
-					items={products}
-				/>
-			</div>
+			<DisplayProductsComponent
+				header={'Todos os Produtos'}
+				items={products}
+			/>
 		</LayoutTemplate>
 	);
 }

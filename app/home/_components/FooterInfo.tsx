@@ -10,17 +10,21 @@ export default function FooterInfo({
 	className: string;
 }) {
 	return (
-		<div className={' ' + className}>
+		<div className=" flex flex-col ">
 			<h1 className="text-bold text-lg">{header}</h1>
-			{items.map((i) => (
-				<Link
-					key={i.title}
-					className="text-sm"
-					href={i.link}
-				>
-					{i.title}
-				</Link>
-			))}
+			<div className="">
+				{items.map((i) => (
+					<div key={i.id} className="">
+						<Link
+							key={i.title}
+							className="text-sm"
+							href={i.link}
+						>
+							{i.title}
+						</Link>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 }
